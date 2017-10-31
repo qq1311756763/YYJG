@@ -1,0 +1,161 @@
+.login_window_logo {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	left: 30px;
+	top: 40px;
+	width: 220px;
+	height: 45px;
+}
+
+.login_window_logo_img {
+	width: 100%;
+	height: 100%;
+}
+
+.login_window_text_login {
+	font-family: "微软雅黑";
+	font-size: 25px;
+	position: absolute;
+	top: 95px;
+	left: 40px;
+}
+
+.login_window_text_detail {
+	font-family: "微软雅黑";
+	font-size: 13px;
+	/*color: #002F5D;*/
+	position: absolute;
+	top: 135px;
+	left: 40px;
+}
+
+.login_window_username {
+	width: 82%;
+	height: 35px;
+	position: absolute;
+	top: 185px;
+	left: 40px;
+	border: 1px solid;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom-color: #E0E0E0;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	outline: none;
+	/*屏蔽被选中时的框框*/
+	background-color: transparent;
+}
+
+.login_window_password {
+	width: 82%;
+	height: 35px;
+	position: absolute;
+	top: 250px;
+	left: 40px;
+	outline: none;
+	/*屏蔽被选中时的框框*/
+	font-family: "微软雅黑";
+	font-size: 18px;
+	border: 1px solid;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom-color: #E0E0E0;
+	background-color: transparent;
+}
+
+div {
+	font-family: "微软雅黑";
+	position: absolute;
+	transition: top 0.2s, color 0.2s, font-size 0.2s;
+	-webkit-transition: top 0.2s, color 0.2s, font-size 0.2s;
+}
+
+.login_window_username_text_0 {
+	width: 82%;
+	height: 35px;
+	font-size: 18px;
+	top: 190px;
+	left: 40px;
+	color: #757575;
+}
+
+.login_window_username_text_1 {
+	width: 82%;
+	height: 35px;
+	font-size: 10px;
+	top: 170px;
+	left: 40px;
+	color: #4285F4;
+}
+
+.login_window_password_text_0 {
+	width: 82%;
+	height: 35px;
+	font-size: 18px;
+	position: absolute;
+	top: 255px;
+	left: 40px;
+	color: #757575;
+}
+
+.login_window_password_text_1 {
+	width: 82%;
+	height: 35px;
+	font-size: 10px;
+	position: absolute;
+	top: 235px;
+	left: 40px;
+	color: #4285F4;
+}
+
+.login_window_help{
+	width: 150px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #4285F4;
+	position: absolute;
+	top: 315px;
+	left: 40px;
+}
+
+.login_window_button{
+	position: absolute;
+	color: #FFFFFF;
+	text-align:center;
+	line-height: 35px; 
+	width: 100px;
+	height: 35px;
+	font-size: 18px;
+	font-family: "微软雅黑";
+	background-color: #4285F4;
+	top: 315px;
+	right: 40px;
+	border:none;
+	cursor:pointer;
+	border-radius: 2px;
+	box-shadow: 0px 2px 5px #757575;
+}
+
+.login_window_userIP{
+	position: absolute;
+	color: #4285F4;
+	font-size: 12px;
+	font-family: "微软雅黑";
+	right: 20px;
+	bottom: 10px;
+	/*background: #000000;
+	width: 50px;*/
+	height: 20px;
+}
+
+.login_window_text_message{
+	position: absolute;
+	color: #EA4335;
+	font-size: 14px;
+	left: 40px;
+	bottom: 80px;
+	font: "微软雅黑";
+}

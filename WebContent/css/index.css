@@ -1,0 +1,552 @@
+/*解决网页边缘空白问题*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@font-face
+{
+	font-family: icomoon;
+	src: url('../font/icomoon.ttf')format('truetype');
+		,url('../font/icomoon.svg')format('svg')
+		,url('../font/icomoon.woff')format('woff');
+}
+
+html {
+  height: 100%;
+}
+
+body{
+	background-color: #EEEEEE;
+	height: 100%;
+}
+
+#index_top_menu {
+	background-color: #DB4437;
+	position:fixed; 
+	width: 100%;
+}
+
+#index_top_menu_icon {
+	background-image: url(../img/menu.svg);
+	width="25px";
+	height="25px";
+	/*	cursor:pointer;
+	border:0px;*/
+}
+#search_div{
+	position: relative;
+	top: 10px;
+	left: 320px;
+	height: 45px;
+	width: 35%;
+}
+
+#search{
+	position: relative;
+	height: 45px;
+	width: 100%;
+	border-radius:5px;
+	border:none;
+	background-color: #E2695F;
+	color: #F7D7D4;
+	font-family: 'icomoon';
+	
+}
+
+#menu_list{
+	width: 185px;
+	height:calc(100% - 65px);/*注意一定要在减号前后加空格*/
+	float: left;
+	position:fixed; 
+	top: 65px;
+}
+
+#menu_list_ul li{
+	list-style-type:none;/*去除li前面 的点*/
+}
+
+/*无消息提示*/
+#notice_-1{
+	position:relative;
+	top: 20px;
+	left: 20px;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	color: #666666;
+}
+
+#notice_-1:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\ea08";
+}
+
+/*菜单列表图标设置*/
+#home:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e900";
+}
+
+#notice:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e96e";	
+}
+
+#user:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e971";
+}
+
+#dataState:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e99a";
+}
+
+#configuration:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e94b";
+}
+
+#YYJGset:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e995";
+}
+
+#helpDOC:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e92a";
+}
+
+#set:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e994";
+}
+
+#sendReturn:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e945";
+}
+
+#help:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e942";
+}
+
+/*菜单列表li的class*/
+.menu_div{
+	position: relative;
+	top: 20px;
+	height: 40px;
+	cursor: pointer;/*鼠标变小手*/
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+}
+
+.menu_div:hover{
+	
+	background-color: #E7E7E7;
+}
+
+.menu_list{
+	position:absolute;
+	top: 10px;
+	left: 20px;
+	/*margin-bottom:20px;*/
+	font-family: "微软雅黑";	
+	font-size: 14px;
+	color: #878787;
+	width: calc(185px - 40px);
+	height: 40px;
+}
+
+.menu {
+	height: 65px;
+	box-shadow:0px 3px 5px #BEBEBE;
+}
+
+.menu_click {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	left: 20px;
+	top: 22px;
+	border: none;
+}
+
+.menu_other{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 20px;
+	top: 22px;
+}
+
+
+/*list-style-type:none;/*去除li前面 的点*/
+
+.icon {
+	width: 20px;
+	height: 20px;
+}
+
+.logo {
+	position: absolute;
+	top: 15px;
+	left: 65px;
+	font-family: "Franklin Gothic Book", "times new roman";
+	font-size: 28px;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	width: 85px;
+}
+
+.page_flag {
+	border-left: 1px solid #E2695F;
+	position: absolute;
+	top: 10px;
+	left: 170px;
+	height: 45px;
+	width: 100px;
+	font-family: "微软雅黑";
+	width: 200px;
+}
+
+.page_flag_text {
+	position: absolute;
+	top: 8px;
+	left: 20px;
+	font-size: 20px;
+	color: #ffffff;
+	font-family: "微软雅黑",'icomoon';
+	width: 200px;
+}
+
+
+/*瀑布流特效*/
+.container {
+	width: 80%;
+	/*margin: 0 auto;*/
+	float: left;
+	margin-left: 200px;
+	margin-top: 90px;
+}
+
+.waterfall {
+	-moz-column-count: 3;
+	-webkit-column-count: 3;
+	column-count: 3;
+	-moz-column-width: 24em;
+	-webkit-column-width: 24em;
+	column-width: 24em;
+	-moz-column-gap: 1em;
+	-webkit-column-gap: 1em;
+	column-gap: 1em;
+}
+
+.pin {
+	padding: 1em;
+	margin: 0 0.125em 1em;
+	-moz-page-break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	break-inside: avoid;
+	background: white;
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.pin img {
+	width: 100%;
+	padding-bottom: 1em;
+	margin-bottom: 0.5em;
+	border-bottom: 1px solid #cccccc;
+}
+/*--瀑布流特效*/
+
+/*通知特效*/
+.notice{
+	width: calc(100% - 280px);
+	height: 70px;
+	float: left;
+	margin-left: 200px;
+	margin-top: 90px;
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	box-shadow:3px 3px 5px #BEBEBE;
+}
+
+/*组态图各个版块名特效*/
+.mod{
+	width: 300px;
+	height: 300px;
+	float: left;
+	margin-left: 150px;
+	margin-top: 40px;
+	background-color: #FFFFFF;
+	
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	
+	border-radius: 50px;
+	box-shadow:3px 3px 5px #BEBEBE;
+	cursor: pointer;
+}
+
+.mod:hover{
+	background-color: #E7E7E7;
+}
+
+.mod_img{
+	margin-left: 65px;
+	margin-top: 30px;
+}
+
+.mod_text{
+	margin-left: 2px;
+	margin-top: 40px;
+	font-size: 30px;
+	font-family: "微软雅黑";
+}
+
+
+/*组态图浏览器特效*/
+.listPaper{
+	position:fixed;
+	width: calc(100% - 500px);
+	height: 80%;
+	left: 300px;
+	top: 100px;
+	
+}
+
+.listPaper_head{
+	background-color: #DB4437;
+	position:relative;
+	width: 100%;
+	height: 65px;	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	box-shadow:3px 3px 5px #BEBEBE;
+	
+}
+
+.listPaper_content{
+	background-color: #FFFFFF;
+	padding-left: 50px;
+	padding-top: 30px;
+	width: calc(100% - 50px);
+	height: calc(100% - 95px);
+	box-shadow:3px 3px 5px #BEBEBE;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	overflow-y: auto;
+}
+
+.dir_class{
+	margin-top: 3px;
+	margin-bottom: 3px;
+	border-bottom:1px dashed #000001;
+	width: calc(100% - 50px);
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	cursor: pointer;/*鼠标变小手*/
+	font-family: "微软雅黑";
+}
+
+.dir_class:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e92f";
+}
+.dir_class:hover{
+	background: #E7E7E7;
+}
+
+.file_li{
+	list-style-type:none;/*去除li前面 的点*/
+}
+
+.file_text{
+	font-family: "微软雅黑";
+	float: left;
+	width: 100%;
+}
+
+.file_text:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e927";
+}
+
+.file_checkbox{
+	width: 10px;
+	float: left;
+	margin-right: 5px;
+	margin-left: -18px;
+}
+
+.file_class{
+	margin-top: 3px;
+	margin-bottom: 3px;
+	border-bottom:1px dashed #000001;
+	width: calc(100% - 50px);
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	cursor: pointer;/*鼠标变小手*/
+	font-family: "微软雅黑";
+	float: left;
+}
+
+.file_class:hover{
+	background: #E7E7E7;
+}
+
+.Navigation{
+	margin-top: -20px;
+	height: 20px;
+	margin-bottom: 20px;
+}
+.Navigation_home{
+	font-family: "微软雅黑";
+	float: left;
+	cursor: pointer;/*鼠标变小手*/
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	color:#3879D9;
+}
+.Navigation_home:hover{
+	background: #E7E7E7;
+}
+.Navigation_up{
+	font-family: "微软雅黑";
+	float: left;
+	cursor: pointer;/*鼠标变小手*/
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	color:#3879D9;
+}
+.Navigation_up:hover{
+	background: #E7E7E7;
+}
+
+.path_text{
+	float:left;
+	color:#E2695F;
+	margin-left: 5px;
+	font-family: "微软雅黑";
+}
+
+.path_text:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\e92f";
+}
+
+.choose_all{
+	float: left;
+	padding: 5px;
+	width: auto;
+	color: #F7D7D4;
+	border: 2px solid #F7D7D4;
+	border-radius:5px;      
+	font-family: "微软雅黑"; 
+	position: absolute;
+	left: 25px;    
+	top: 18px;
+	cursor: pointer;/*鼠标变小手*/
+	
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	transition:color 0.3s;
+}
+
+.choose_all:hover{
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+.download_all{
+	float: left;
+	padding: 5px;
+	width: auto;
+	color: #F7D7D4;
+	border: 2px solid #F7D7D4;
+	border-radius:5px;  
+	font-family: "微软雅黑";  
+	position: absolute;
+	left: 110px;    
+	top: 18px;
+	cursor: pointer;/*鼠标变小手*/
+	
+	transition:background-color 0.3s;
+	-moz-transition:background-color 0.3s; /* Firefox 4 */
+	-webkit-transition:background-color 0.3s; /* Safari and Chrome */
+	-o-transition:background-color 0.3s; /* Opera */
+	transition:color 0.3s;
+}
+
+.download_all:hover{
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+.head_close{
+	cursor: pointer;/*鼠标变小手*/
+	position: absolute;
+	right: 50px;    
+	top: 18px;
+	color: #F7D7D4;
+	
+	transition:color 0.3s;
+}
+.head_close:before{
+	font-family: 'icomoon';
+	position:relative;
+	top: 1px;
+    content: "\ea0f";
+    font-size: 15px;
+}
+.head_close:hover{
+	color: #FFFFFF;
+}
