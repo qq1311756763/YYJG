@@ -23,84 +23,86 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
      
-    // ÉÏ´«ÎÄ¼ş´æ´¢Ä¿Â¼
+    // ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½æ´¢Ä¿Â¼
     private static final String UPLOAD_DIRECTORY = "upload";
  
-    // ÉÏ´«ÅäÖÃ
+    // ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
     private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
     private static final long MAX_FILE_SIZE      = 1024 * 1024 * 100; // 40MB
     private static final long MAX_REQUEST_SIZE   = 1024 * 1024 * 2024; // 50MB
  
     /**
-     * ÉÏ´«Êı¾İ¼°±£´æÎÄ¼ş
+     * ï¿½Ï´ï¿½ï¿½ï¿½ï¿½İ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
      */
     protected void doPost(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
-		// ¼ì²âÊÇ·ñÎª¶àÃ½ÌåÉÏ´«
+		// ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ï´ï¿½
 		if (!ServletFileUpload.isMultipartContent(request)) {
-		    // Èç¹û²»ÊÇÔòÍ£Ö¹
+		    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹
 		    PrintWriter writer = response.getWriter();
-		    writer.println("Error: ±íµ¥±ØĞë°üº¬ enctype=multipart/form-data");
+		    writer.println("Error: ç±»å‹å¿…é¡»ä¸º enctype=multipart/form-data");
 		    writer.flush();
 		    return;
 		}
  
-        // ÅäÖÃÉÏ´«²ÎÊı
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
         DiskFileItemFactory factory = new DiskFileItemFactory();
-        // ÉèÖÃÄÚ´æÁÙ½çÖµ - ³¬¹ıºó½«²úÉúÁÙÊ±ÎÄ¼ş²¢´æ´¢ÓÚÁÙÊ±Ä¿Â¼ÖĞ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ù½ï¿½Öµ - ï¿½ï¿½ï¿½ï¿½ï¿½ó½«²ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Ê±Ä¿Â¼ï¿½ï¿½
         factory.setSizeThreshold(MEMORY_THRESHOLD);
-        // ÉèÖÃÁÙÊ±´æ´¢Ä¿Â¼
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½æ´¢Ä¿Â¼
         factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
  
         ServletFileUpload upload = new ServletFileUpload(factory);
          
-        // ÉèÖÃ×î´óÎÄ¼şÉÏ´«Öµ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Öµ
         upload.setFileSizeMax(MAX_FILE_SIZE);
          
-        // ÉèÖÃ×î´óÇëÇóÖµ (°üº¬ÎÄ¼şºÍ±íµ¥Êı¾İ)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ (ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½)
         upload.setSizeMax(MAX_REQUEST_SIZE);
         
-        // ÖĞÎÄ´¦Àí
+        // ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
         upload.setHeaderEncoding("UTF-8"); 
 
-        // ¹¹ÔìÁÙÊ±Â·¾¶À´´æ´¢ÉÏ´«µÄÎÄ¼ş
-        // Õâ¸öÂ·¾¶Ïà¶Ôµ±Ç°Ó¦ÓÃµÄÄ¿Â¼
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Â·ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+        // ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ç°Ó¦ï¿½Ãµï¿½Ä¿Â¼
         String uploadPath = getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
        
          
-        // Èç¹ûÄ¿Â¼²»´æÔÚÔò´´½¨
+        // ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò´´½ï¿½
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
  
         try {
-            // ½âÎöÇëÇóµÄÄÚÈİÌáÈ¡ÎÄ¼şÊı¾İ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(request);
  
             if (formItems != null && formItems.size() > 0) {
-                // µü´ú±íµ¥Êı¾İ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 for (FileItem item : formItems) {
-                    // ´¦Àí²»ÔÚ±íµ¥ÖĞµÄ×Ö¶Î
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½Ğµï¿½ï¿½Ö¶ï¿½
                     if (!item.isFormField()) {
                         String fileName = new File(item.getName()).getName();
                         String filePath = uploadPath + File.separator + fileName;
                         File storeFile = new File(filePath);
-                        // ÔÚ¿ØÖÆÌ¨Êä³öÎÄ¼şµÄÉÏ´«Â·¾¶
-                        System.out.println(filePath);
-                        // ±£´æÎÄ¼şµ½Ó²ÅÌ
+                        // ï¿½Ú¿ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Â·ï¿½ï¿½
+                        System.out.println("user upload file:"+filePath);
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ó²ï¿½ï¿½
                         item.write(storeFile);
+                        String dlfilename =  "http://"+request.getHeader("host")+"/YYJG/upload/"+fileName;
                         request.setAttribute("message",
-                            "ÎÄ¼şÉÏ´«³É¹¦!");
+                            "<h2>ä¸Šä¼ æˆåŠŸï¼</h2><br>"
+                            + "åˆ†äº«åœ°å€ï¼š"+dlfilename);
                     }
                 }
             }
         } catch (Exception ex) {
             request.setAttribute("message",
-                    "´íÎóĞÅÏ¢: " + ex.getMessage());
+                    "é”™è¯¯: " + ex.getMessage());
         }
-        // Ìø×ªµ½ message.jsp
+        // ï¿½ï¿½×ªï¿½ï¿½ message.jsp
         getServletContext().getRequestDispatcher("/message.jsp").forward(
                 request, response);
     }

@@ -16,8 +16,11 @@
  */
 package socket;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,10 +47,9 @@ public class dlFilePath {
 	 
 	 public dlFilePath() {
 		 file.getWebPath paths =new file.getWebPath();
-		 webPath = this.getClass().getClassLoader().getResource("").getPath();
+		 webPath = this.getClass().getClassLoader().getResource("").getPath();//获取tomcat中的类路径
 		 webPath = webPath.substring(1);
 		 webPath+="../../upload/";
-		 System.out.println(webPath/*System.getProperty("catalina.home")*/);
 	}
 	 
 	@OnOpen
@@ -69,7 +71,7 @@ public class dlFilePath {
 	    		message+=filenames[i]+"&";
 	    	}
 	    }
-	    System.out.println(message);
+	    //System.out.println(message);
 	    broadcast(message,session);
 	}
 	
@@ -114,12 +116,37 @@ public class dlFilePath {
 	        String[] filenames = new String[array.length];
 	        for(int i=0;i<array.length;i++){   
 	            if(array[i].isFile()){     
-	            	filenames[i] = "file|"+array[i].getName();   
+	            	filenames[i] = "file|"+array[i].getName();  
+	            	getCreateTime(array[i].getPath()/*+"\\"+array[i].getName()*/);
 	            }else if(array[i].isDirectory()){   
 	                filenames[i] = "dir|"+array[i].getName();
+	                getCreateTime(array[i].getPath()/*+"\\"+array[i].getName()*/+array[i]);
 	            }
 	        }  
 	        return filenames;
+	    }  
+	 
+	 public void getCreateTime(String path){  
+	        String filePath = "C:\\test.txt";  
+	        String strTime = null;  
+	        try {  
+	            Process p = Runtime.getRuntime().exec("cmd /C dir "           
+	                    + filePath  
+	                    + "/tc" );  
+	            InputStream is = p.getInputStream();   
+	            BufferedReader br = new BufferedReader(new InputStreamReader(is));             
+	            String line;  
+	            while((line = br.readLine()) != null){  
+	                if(line.endsWith(".txt")){  
+	                    strTime = line.substring(0,17);  
+	                    break;  
+	                }                             
+	             }   
+	        } catch (IOException e) {  
+	            e.printStackTrace();  
+	        }         
+	        System.out.println("创建时间    " + strTime+"path:"+path);     
+	        //输出：创建时间   2009-08-17  10:21  
 	    }  
    
 }

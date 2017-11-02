@@ -68,6 +68,14 @@ function YYJGset()//平台配置
 	document.getElementById("iframe_content").src = "function_windows/YYJGset.jsp";
 }
 
+function tools()//管理工具
+{
+	var page_flag_text = document.getElementById("page_flag_text");
+	page_flag_text.innerHTML = " 管理工具";
+
+	document.getElementById("iframe_content").src = "model/tools.html";
+}
+
 function connect()
 {
 	/*socket = new ReconnectingWebSocket('ws://127.0.0.1:12345');*/

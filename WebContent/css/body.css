@@ -1,0 +1,10 @@
+html,body{
+  height:100%;
+}
+.home-body{
+	margin: 0px;
+	background-image:url(../img/login_background.svg);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size: 100% 100%;
+}
