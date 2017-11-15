@@ -21,6 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -112,41 +115,40 @@ public class dlFilePath {
 	        // get file list where the path has   
 	        File file = new File(path);   
 	        // get the folder list   
-	        File[] array = file.listFiles();   
-	        String[] filenames = new String[array.length];
-	        for(int i=0;i<array.length;i++){   
-	            if(array[i].isFile()){     
-	            	filenames[i] = "file|"+array[i].getName();  
-	            	getCreateTime(array[i].getPath()/*+"\\"+array[i].getName()*/);
-	            }else if(array[i].isDirectory()){   
-	                filenames[i] = "dir|"+array[i].getName();
-	                getCreateTime(array[i].getPath()/*+"\\"+array[i].getName()*/+array[i]);
-	            }
+	        File[] array = file.listFiles(); 
+	        int files_num = 0;
+	        for(int i=0;i<array.length;i++)
+	        {
+	        	if(array[i].isFile()) {
+	        		files_num++;
+	        	}
+	        }
+	        String[] filenames = new String[files_num];
+	        int i,j;
+			for(i=j=0;j<array.length;j++){   
+	        		if(array[j].isFile())
+		            {     
+		            	try {
+		            		filenames[i] = array[j].getName()+"|"+getCreateTime(array[j].getCanonicalPath());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+						}
+		            	i++;
+		            }
 	        }  
 	        return filenames;
 	    }  
 	 
-	 public void getCreateTime(String path){  
-	        String filePath = "C:\\test.txt";  
-	        String strTime = null;  
-	        try {  
-	            Process p = Runtime.getRuntime().exec("cmd /C dir "           
-	                    + filePath  
-	                    + "/tc" );  
-	            InputStream is = p.getInputStream();   
-	            BufferedReader br = new BufferedReader(new InputStreamReader(is));             
-	            String line;  
-	            while((line = br.readLine()) != null){  
-	                if(line.endsWith(".txt")){  
-	                    strTime = line.substring(0,17);  
-	                    break;  
-	                }                             
-	             }   
-	        } catch (IOException e) {  
-	            e.printStackTrace();  
-	        }         
-	        System.out.println("创建时间    " + strTime+"path:"+path);     
-	        //输出：创建时间   2009-08-17  10:21  
-	    }  
+	 
+	 public String getCreateTime(String path) {
+	        File file =new File(path);
+	        Long time =file.lastModified();
+	        Calendar cd = Calendar.getInstance();
+	        cd.setTimeInMillis(time);
+	        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.CHINA);
+	        //System.out.println(format.format(cd.getTime()));
+	        return(format.format(cd.getTime()));
+	        //TODO 
+	    }
    
 }
