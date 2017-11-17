@@ -71,9 +71,10 @@ public class ChatAnnotation {
     @OnMessage
     public void incoming(String message) {
         // Never trust the client
-        String filteredMessage = String.format("%s: %s",
+    	System.out.println(message);
+        /*String filteredMessage = String.format("%s: %s",
                 nickname, HTMLFilter.filter(message.toString()));
-        broadcast(filteredMessage);
+        broadcast(filteredMessage);*/
     }
 
 

@@ -22,7 +22,7 @@
 			<form method="POST" name="form1" action="login_judge.jsp">
 				<input class="login_window_username" name="username" id="username_input" onfocus="change_text('username_text|login_window_username_text|username_input')" onblur="back_text('username_text|login_window_username_text|username_input')" aria-label="用户账户"/>
 				<input class="login_window_password" name="password" id="password_input" onfocus="change_text('password_text|login_window_password_text|password_input')" onblur="back_text('password_text|login_window_password_text|password_input')" type="password"/>
-				<input type="submit" value="登 陆" class="login_window_button">
+				<input type="submit" value="登 录" class="login_window_button">
 			</form>  
 			<div class="login_window_help">忘记用户名/密码？</div>
 			<div class="login_window_userIP">
