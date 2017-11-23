@@ -1,4 +1,5 @@
-var cnurl = "ws://127.0.0.1:8080/YYJG/websocket/getwatcher"
+//var cnurl = "ws://127.0.0.1:8080/YYJG/websocket/getwatcher"
+var cnurl = "ws://10.80.48.144:61616/YYJG/websocket/getwatcher"
 var cpu13 = 1;
 var cpu14 = 1;
 var cpu15 = 1;
@@ -129,16 +130,16 @@ function getHardDiskStatic()
 function getServerStatic()
 {
 	var text = '{ "ServerStatic" : [' +
-				'{ "server":"13" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"14" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"15" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"16" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"17" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"18" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"20" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"21" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"121" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" },' +
-				'{ "server":"144" , "CPU":\"'+parseInt(100*Math.random())+'\" , "RAM":\"'+parseInt(100*Math.random())+'\" }]}';
+				'{ "server":"13" , "CPU":\"'+cpu[0]+'\" , "RAM":\"'+mem[0]+'\" },' +
+				'{ "server":"14" , "CPU":\"'+cpu[1]+'\" , "RAM":\"'+mem[1]+'\" },' +
+				'{ "server":"15" , "CPU":\"'+cpu[2]+'\" , "RAM":\"'+mem[2]+'\" },' +
+				'{ "server":"16" , "CPU":\"'+cpu[3]+'\" , "RAM":\"'+mem[3]+'\" },' +
+				'{ "server":"17" , "CPU":\"'+cpu[4]+'\" , "RAM":\"'+mem[4]+'\" },' +
+				'{ "server":"18" , "CPU":\"'+cpu[5]+'\" , "RAM":\"'+mem[5]+'\" },' +
+				'{ "server":"20" , "CPU":\"'+cpu[6]+'\" , "RAM":\"'+mem[6]+'\" },' +
+				'{ "server":"21" , "CPU":\"'+cpu[7]+'\" , "RAM":\"'+mem[7]+'\" },' +
+				'{ "server":"121" , "CPU":\"'+cpu[8]+'\" , "RAM":\"'+mem[8]+'\" },' +
+				'{ "server":"144" , "CPU":\"'+cpu[9]+'\" , "RAM":\"'+mem[9]+'\" }]}';
 				
 	var obj = JSON.parse(text);
 	return obj;

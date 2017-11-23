@@ -1,6 +1,6 @@
-var dlurl = "http://10.80.48.121/YYJG/upload/";
+var dlurl = "http://10.80.48.144:61616/YYJG/upload/";
 /*var cnurl = "ws://127.0.0.1:8080/YYJG/websocket/dl"*/
-var cnurl = "ws://10.80.48.121/YYJG/websocket/dl"
+var cnurl = "ws://10.80.48.144:61616/YYJG/websocket/dl"
 
 function connect()
 {

@@ -6,11 +6,12 @@
 		<script type="text/javascript" src="../js/echarts.common.min.js" ></script>
 		<script type="text/javascript" src="../js/action/tools/GetData.js" ></script>
 		<script type="text/javascript" src="../js/action/tools/SetData.js" ></script>
+		<script type="text/javascript" src="../js/reconnecting-websocket.js" ></script>
 		<link rel="stylesheet" href="../css/bootstrap.min.css" />
 		<link rel="stylesheet" href="../css/mod/mod_server_static.css" />
 		<title>home</title>
 	</head>
-	<body>
+	<body onload="connect()">
 		<div class="row" style="width: 100%;height: 100%;margin: 0px;">
 			<div class="panel panel-default col-md-6" id="server_static" ></div>
 			<div class="panel panel-default col-md-6" id="interrupted_static" ></div>
