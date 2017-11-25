@@ -16,17 +16,28 @@
 	<body style="background-image:url(img/login_background.svg);position:relative;background-repeat:no-repeat;background-position:center;background-size: 100% 100%;height: 100%;">
 	<%  
 	/* 判断用户是否登陆 */
+	String user="";
     if(session.getAttribute("user") == null)  
     {  
         out.println("<script>window.location.href='index.html'</script>");  
         return;  
-    }  
+    } 
+	else{
+	user = session.getAttribute("user").toString();
+	}
    /*  Object user = session.getAttribute("user");  
     out.println("欢迎"+user);  */ 
   %> 
-
+	<script>
+	window.onload = function()
+	{
+		var username = document.getElementById("username");
+		username.value = "<%=user%>"
+	}
+	</script>
 	
 		<!--首页顶部菜单-->
+		<input type="hidden" id="username"></div><!-- 用户名 -->
 		<div id="index_top_menu" class="menu">
 			<a class="menu_click" href="#"><img class="icon" src="img/menu.svg" /></a>
 			<div class="logo">Spic+</div>

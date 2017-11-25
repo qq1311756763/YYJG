@@ -4,7 +4,7 @@
 var socket;
 var flag = -1;
 var path_now = "";
-
+var username = "佚名";
 var mod_flag = -1;
 
 var hdPath = "D:\\CPIWEB\\HSDraw\\火电";
@@ -56,8 +56,9 @@ function configuration()//组态图管理
 	var paper = document.getElementById("paper");
 	paper.innerHTML = div_str;
 	paper.setAttribute("class", "listPaper");*/
-	
-	document.getElementById("iframe_content").src = "http://10.80.48.16/help/html/worker/";
+	username = document.getElementById("username").value;
+	document.getElementById("iframe_content").src = "model/mod_zt_tools.jsp?user="+username;
+	/*document.getElementById("iframe_content").src = "http://10.80.48.16/help/html/worker/";*/
 }
 
 function YYJGset()//平台配置
